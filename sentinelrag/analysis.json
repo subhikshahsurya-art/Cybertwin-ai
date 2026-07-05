@@ -1,0 +1,32 @@
+[
+  {
+    "alert": {
+      "time": "08:41:24",
+      "message": "SSH connection attempt detected",
+      "severity": "MEDIUM"
+    },
+    "mitre_technique": "SSH",
+    "mitre_id": "T1021.004",
+    "ai_analysis": "An SSH connection attempt detection attack occurs when an attacker tries to\u001b[2D\u001b[K\nto login to a system with incorrect credentials. It's dangerous because it \u001b[K\ncan reveal the attacker's IP address and potentially lead to further exploi\u001b[6D\u001b[K\nexploitation, compromising sensitive data and systems."
+  },
+  {
+    "alert": {
+      "time": "08:41:30",
+      "message": "ARP packet detected - possible MITM attack",
+      "severity": "CRITICAL"
+    },
+    "mitre_technique": "Adversary-in-the-Middle",
+    "mitre_id": "T1557",
+    "ai_analysis": "ARP (Address Resolution Protocol) packet detection indicates a potential MI\u001b[2D\u001b[K\nMITM (Man-in-the-Middle) attack. This is dangerous as it allows an attacker\u001b[8D\u001b[K\nattacker to intercept and modify data between two devices on the same netwo\u001b[5D\u001b[K\nnetwork, compromising confidentiality and security. One action: Run a netwo\u001b[5D\u001b[K\nnetwork scan and update device firmware immediately."
+  },
+  {
+    "alert": {
+      "time": "08:41:30",
+      "message": "ARP packet detected - possible MITM attack",
+      "severity": "CRITICAL"
+    },
+    "mitre_technique": "Adversary-in-the-Middle",
+    "mitre_id": "T1557",
+    "ai_analysis": "ARP (Address Resolution Protocol) packet detection in your network indicate\u001b[8D\u001b[K\nindicates a potential MitM (Man-in-the-Middle) attack. It's dangerous as it\u001b[2D\u001b[K\nit allows attackers to intercept and modify data. One immediate action is t\u001b[1D\u001b[K\nto disconnect the affected device from the network immediately."
+  }
+]

@@ -1,0 +1,5 @@
+*.pcap
+*.cap
+__pycache__/
+*.pyc
+vectordb/

@@ -1,0 +1,32 @@
+[
+  {
+    "time": "08:41:24",
+    "message": "ARP packet detected - possible MITM attack",
+    "severity": "CRITICAL"
+  },
+  {
+    "time": "08:41:24",
+    "message": "ARP packet detected - possible MITM attack",
+    "severity": "CRITICAL"
+  },
+  {
+    "time": "08:41:24",
+    "message": "HTTP traffic detected on port 80",
+    "severity": "LOW"
+  },
+  {
+    "time": "08:41:24",
+    "message": "SSH connection attempt detected",
+    "severity": "MEDIUM"
+  },
+  {
+    "time": "08:41:30",
+    "message": "ARP packet detected - possible MITM attack",
+    "severity": "CRITICAL"
+  },
+  {
+    "time": "08:41:30",
+    "message": "ARP packet detected - possible MITM attack",
+    "severity": "CRITICAL"
+  }
+]

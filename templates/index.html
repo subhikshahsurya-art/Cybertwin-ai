@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CyberTwin Dashboard</title>
+  <style>
+    body{font-family:Arial;background:#0d1117;color:#c9d1d9;padding:20px}
+    h1,h2{color:#58a6ff}
+    table{width:100%;border-collapse:collapse;margin-top:10px}
+    th,td{padding:10px;border:1px solid #30363d;text-align:left}
+    th{background:#161b22;color:#58a6ff}
+    .HIGH{color:#f85149}.CRITICAL{color:#ff7b72}
+    .MEDIUM{color:#e3b341}.LOW{color:#3fb950}
+  </style>
+</head>
+<body>
+  <h1>CyberTwin Security Dashboard</h1>
+  <h2>Discovered Assets</h2>
+  <table>
+    <thead><tr><th>IP</th><th>Ports</th><th>Services</th></tr></thead>
+    <tbody id="assets"></tbody>
+  </table>
+  <h2>Alerts</h2>
+  <table>
+    <thead><tr><th>Time</th><th>Message</th><th>Severity</th></tr></thead>
+    <tbody id="alerts"></tbody>
+  </table>
+  <script>
+    async function refresh(){
+      const ar=await fetch('/api/assets');
+      const d=await ar.json();
+      const tb=document.getElementById('assets');
+      tb.innerHTML='';
+      if(d.hosts&&d.hosts.length>0){
+        d.hosts.forEach(h=>{
+          const p=h.ports.map(x=>x.port).join(', ')||'none';
+          const s=h.ports.map(x=>x.service).join(', ')||'-';
+          tb.innerHTML+=`<tr><td>${h.ip}</td><td>${p}</td><td>${s}</td></tr>`;
+        });
+      }else{tb.innerHTML='<tr><td colspan="3">No assets found</td></tr>';}
+      const lr=await fetch('/api/alerts');
+      const al=await lr.json();
+      const at=document.getElementById('alerts');
+      at.innerHTML=al.length
+        ?al.reverse().map(a=>`<tr><td>${a.time}</td><td>${a.message}</td><td class="${a.severity}">${a.severity}</td></tr>`).join('')
+        :'<tr><td colspan="3">No alerts yet</td></tr>';
+    }
+    setInterval(refresh,4000);refresh();
+  </script>
+<h2>AI Threat Analysis</h2>
+<div id="analysis">Loading...</div>
+<script>
+async function loadAnalysis(){
+    try {
+        const r = await fetch('/api/analysis');
+        const data = await r.json();
+        document.getElementById('analysis').innerHTML = data.map(function(a) {
+            return '<div style="border:1px solid #30363d;border-radius:8px;padding:16px;margin:10px 0;background:#161b22">' +
+            '<div style="color:#f85149;font-weight:bold">' + a.alert.severity + ' - ' + a.alert.message + '</div>' +
+            '<div style="color:#58a6ff;margin:8px 0">MITRE: ' + a.mitre_technique + ' (' + a.mitre_id + ')</div>' +
+            '<div style="color:#c9d1d9;font-size:13px">' + a.ai_analysis + '</div>' +
+            '</div>';
+        }).join('');
+    } catch(e) {
+        document.getElementById('analysis').innerHTML = 'No analysis yet';
+    }
+}
+setInterval(loadAnalysis, 10000);
+loadAnalysis();
+</script>
+</body>
+</html>
+
