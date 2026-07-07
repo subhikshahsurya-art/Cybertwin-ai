@@ -1,5 +1,4 @@
 # CyberTwin-AI — Digital Twin Attack Simulation Platform
-## Dashboard Screenshot
 ## Dashboard Screenshots
 ![CyberTwin Dashboard](cybertwin.png)
 ![CyberTwin Dashboard 2](cybertwin%202.png)
