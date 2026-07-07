@@ -1,5 +1,6 @@
 # CyberTwin-AI — Digital Twin Attack Simulation Platform
-
+## Dashboard
+![CyberTwin Dashboard](dashboard.png)
 An AI-powered cybersecurity platform that simulates real-world attacks, detects them in real time, and uses AI to automatically analyze threats.
 
 ## What it does
